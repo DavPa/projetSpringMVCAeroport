@@ -27,16 +27,16 @@ public class ClientController {
 	@Autowired
 	ClientRepository clientRepository;
 
-	@GetMapping("/clientList")
-	public String clientList(Model model) {
+	@GetMapping("/listClient")
+	public String listClient(Model model) {
 		model.addAttribute("clients", clientRepository.findAll());
-		return "client/clientList";
+		return "client/listClient";
 	}
 
 	@GetMapping("/delete")
 	public String delete(@RequestParam(name = "id", required = true) Long id, Model model) {
 		clientRepository.deleteById(id);
-		return "redirect:/client/clientList";
+		return "redirect:/client/listClient";
 	}
 
 	@GetMapping("/edit")
@@ -91,7 +91,7 @@ public class ClientController {
 			return goEdit(client, model);
 		} 
 		clientRepository.save(client);
-		return "redirect:/client/clientList";
+		return "redirect:/client/listClient";
 	}
 
 }
