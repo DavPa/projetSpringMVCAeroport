@@ -15,7 +15,7 @@
 
 	<mvc:annotation-driven validator="validator"></mvc:annotation-driven>
 	<context:component-scan
-		base-package="projetSpringAeroport.controller"></context:component-scan>
+		base-package="projetSpringMVCAeroport.controller"></context:component-scan>
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/"></property>
