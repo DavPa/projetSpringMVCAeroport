@@ -1,6 +1,6 @@
 package projetSpringMVCAeroport.controller;
 
-<<<<<<< HEAD
+
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -95,8 +95,4 @@ public class ClientController {
 		return "redirect:/client/listClient";
 	}
 
-=======
-public class ClientController {
-
->>>>>>> kevin
 }

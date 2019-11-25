@@ -34,12 +34,12 @@
 					<th>numeroFax</th>
 					<th>email</th>
 					<th>adresse</th>
-					<th>login</th>
-					<th>reservations</th>
-					<th>prenom</th>
-					<th>titre physique</th>
-					<th>titre moral</th>
-					<th>siret</th>
+<!-- 					<th>login</th> -->
+<!-- 					<th>reservations</th> -->
+<!-- 					<th>prenom</th> -->
+<!-- 					<th>titre physique</th> -->
+<!-- 					<th>titre moral</th> -->
+<!-- 					<th>siret</th> -->
 				</tr>
 			</thead>
 			<tbody>
@@ -52,16 +52,20 @@
 						<td>${c.numeroFax}</td>
 						<td>${c.email}</td>
 						<td>${c.adresse}</td>
-						<td>${c.login}</td>
-						<td>${c.reservations}</td>
+<%-- 						<td>${c.login}</td> --%>
+<%-- 						<td>${c.reservations}</td> --%>
 <%-- 						<td><c:if test="${c.getClass().simpleName == 'ClientEI' || c.getClass().simplename == 'ClientPhysique}">${c.prenom}</c:if></td> --%>
 <%-- 						<td><c:if test="${c.getClass().simpleName == 'ClientEI' || c.getClass().simplename == 'ClientPhysique}">${c.titre}</c:if></td> --%>
 <%-- 						<td><c:if test="${c.getClass().simpleName == 'ClientMoral'}">${c.titre}</c:if></td> --%>
 <%-- 						<td><c:if test="${c.getClass().simpleName == 'ClientMoral'}">${c.siret}</c:if></td> --%>
-						<c:url var="edit" value="edit"><c:param name="id" value="${c.id}"></c:param></c:url>
-						<td><a href="${edit}" class="btn btn-outline-primary">Editer</a></td>
-						<c:url var="delete" value="delete"><c:param name="id" value="${c.id}"></c:param></c:url>
-						<td><a href="${delete}" class="btn btn-outline-danger">Supprimer</a></td>
+						<c:url var="edit" value="edit">
+							<c:param name="id" value="${s.id}"></c:param>
+						</c:url>
+						<td><a href="${edit}" class="btn btn-outline-primary">modifier</a></td>
+						<c:url var="delete" value="delete">
+							<c:param name="id" value="${s.id}"></c:param>
+						</c:url>
+						<td><a href="${delete}" class="btn btn-outline-danger">supprimer</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
