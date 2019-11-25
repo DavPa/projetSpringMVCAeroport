@@ -20,14 +20,18 @@
 	<div class="container">
 		<fieldset>
 			<legend>Edition reservation</legend>
-			<form:form action="save" method="post" modelAttribute="reservations">
+			<form:form action="save" method="post" modelAttribute="reservation">
 				<div class="form-group">
 					<form:label path="id">Id : </form:label>
 					<form:input path="id" cssClass="for-control" readonly="true"></form:input>
 				</div>
 				<div class="form-group">
-					<form:label path="date">Date : </form:label>
-					<form:input path="date" cssClass="for-control"></form:input>
+					<form:label path="date_reservation">Date : </form:label>
+					<form:input type="date" path="date_reservation" cssClass="for-control"></form:input>
+				</div>
+				<div class="form-group">
+					<form:label path="numero">Numero : </form:label>
+					<form:input type="integer" path="numero" cssClass="for-control"></form:input>
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-outline-primary">enregistrer</button>
@@ -36,6 +40,5 @@
 			</form:form>
 		</fieldset>
 	</div>
-
 </body>
 </html>

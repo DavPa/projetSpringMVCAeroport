@@ -1,11 +1,17 @@
 package projetSpringMVCAeroport.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import jpa.model.Reservations;
 import jpa.repository.ReservationRepository;
 
 @Controller
@@ -22,60 +28,39 @@ public class ReservationsController {
 		return "reservations/listReservations";
 	}
 
-//	@GetMapping("/delete")
-//	public String delete(@RequestParam(name = "id", required = true) Integer id) {
-//		personneRepository.deleteById(id);
-//		return "redirect:/personne/list";
-//	}
-//
-//	@GetMapping("/edit")
-//	public String edit(@RequestParam(name = "id", required = true) Integer id, Model model) {
-//		Optional<Personne> opt = personneRepository.findById(id);
-//		Personne p = null;
-//		if (opt.isPresent()) {
-//			p = opt.get();
-//		} else {
-//			p = new Stagiaire();
-//		}
-//		return goEdit(p, model);
-//	}
-//
-//	@PostMapping("/saveFormateur")
-//	public String saveFormateur(@Valid @ModelAttribute("personne") Formateur formateur, BindingResult br, Model model) {
-//		return save(formateur, br, model);
-//	}
-//
-//	@PostMapping("/saveStagiaire")
-//	public String saveStagiaire(@Valid @ModelAttribute("personne") Stagiaire stagiaire, BindingResult br, Model model) {
-//		return save(stagiaire, br, model);
-//	}
-//
-//	public String save(Personne personne, BindingResult br, Model model) {
-//		if (br.hasErrors()) {
-//			return goEdit(personne, model);
-//		}
-//		if (personne.getSalle() != null && personne.getSalle().getId() == null) {
-//			personne.setSalle(null);
-//		}
-//		personneRepository.save(personne);
-//		return "redirect:/personne/list";
-//	}
-//
-//	private String goEdit(Personne personne, Model model) {
-//		model.addAttribute("personne", personne);
-//		model.addAttribute("civilites", Civilite.values());
-//		model.addAttribute("salles", salleRepository.findAll());
-//		return "personne/edit";
-//	}
-//
-//	@GetMapping("/addStagiaire")
-//	public String addStagiaire(Model model) {
-//		return goEdit(new Stagiaire(), model);
-//	}
-//
-//	@GetMapping("/addFormateur")
-//	public String addFormateur(Model model) {
-//		return goEdit(new Formateur(), model);
-//	}
+	@GetMapping("/delete")
+	public String delete(@RequestParam(name = "id", required = true) Long id) {
+		reservationRepository.deleteById(id);
+		return "redirect:/reservations/listReservations";
+	}
+
+	@GetMapping("/edit")
+	public String edit(@RequestParam(name = "id", required = true) Long id, Model model) {
+		Optional<Reservations> opt = reservationRepository.findById(id);
+		Reservations r = null;
+		if (opt.isPresent()) {
+			r = opt.get();
+		} else {
+			r = new Reservations();
+		}
+		return goEdit(r, model);
+	}
+
+	@PostMapping("/save")
+	public String save(@ModelAttribute("reservation") Reservations reservation) {
+		reservationRepository.save(reservation);
+		return "redirect:/reservations/listReservations";
+	}
+
+	private String goEdit(Reservations reservation, Model model) {
+		model.addAttribute("reservation", reservation);
+		// model.addAttribute("salles", salleRepository.findAll());
+		return "reservations/editReservations";
+	}
+
+	@GetMapping("/addReservation")
+	public String addReservation(Model model) {
+		return goEdit(new Reservations(), model);
+	}
 
 }
