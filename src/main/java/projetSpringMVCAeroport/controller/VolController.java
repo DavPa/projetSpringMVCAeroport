@@ -20,16 +20,16 @@ public class VolController {
 	@Autowired
 	VolRepository volRepository;
 	
-	@GetMapping("/volList")
+	@GetMapping("/listVol")
 	public String volList(Model model) {
 		model.addAttribute("vols", volRepository.findAll());
-		return "vol/volList";
+		return "vol/listVol";
 	}
 
 	@GetMapping("/delete")
 	public String delete(@RequestParam(name = "id", required = true) Long id, Model model) {
 		volRepository.deleteById(id);
-		return "redirect:/client/clientList";
+		return "redirect:/vol/listVol";
 	}
 	
 	@GetMapping("/edit")
@@ -45,8 +45,8 @@ public class VolController {
 	}
 	
 	private String goEdit(Vol p, Model model) {
-		model.addAttribute("client", p);
-		return "client/clientEdit";
+		model.addAttribute("vol", p);
+		return "vol/edit";
 	}
 	
 	@GetMapping("/addVol")
@@ -57,7 +57,7 @@ public class VolController {
 	@GetMapping("/save")
 	public String save(@ModelAttribute("vol")Vol vol) {
 		volRepository.save(vol);
-		return "redirect:/vol/list";
+		return "redirect:/vol/listVol";
 	}
 	
 }

@@ -1,4 +1,6 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
     <head>  
         <meta charset="UTF-8">
@@ -20,8 +22,8 @@
     </head>
     <body>
         <div class="jumbotron text-center">
-            <h1>Bienvenue sur l'aÃ©roport en ligne !</h1>
-            <p>Dans cet espace retrouvez tous vos vols et rÃ©servations</p>
+            <h1>Bienvenue sur l'aéroport en ligne !</h1>
+            <p>Dans cet espace retrouvez tous vos vols et réservations</p>
         </div>
 
         <div class="container">         
@@ -29,9 +31,9 @@
         </div>
 
         <div id="liens">
-            <h3>Cliquez pour accÃ©der Ã  :</h3><br>
+            <h3>Cliquez pour accéder à :</h3><br>
             <a href="http://localhost:8080/projetSpringMVCAeroport/client/listClient">La liste des clients</a><br>
-            <a href="http://localhost:8080/projetSpringMVCAeroport/reservation/listReservations">La liste des rÃ©servations</a><br>
+            <a href="http://localhost:8080/projetSpringMVCAeroport/reservations/listReservations">La liste des réservations</a><br>
             <a href="http://localhost:8080/projetSpringMVCAeroport/vol/listVol">La liste des vols</a><br>
             <a href="http://localhost:8080/projetSpringMVCAeroport/passager/listPassager">La liste des passagers</a><br>
         </div>
