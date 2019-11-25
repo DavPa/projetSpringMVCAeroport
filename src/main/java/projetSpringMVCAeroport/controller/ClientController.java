@@ -1,9 +1,7 @@
 package projetSpringMVCAeroport.controller;
 
 import java.util.Optional;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import jpa.model.Client;
 import jpa.model.ClientEI;
 import jpa.model.ClientMoral;
@@ -27,16 +24,16 @@ public class ClientController {
 	@Autowired
 	ClientRepository clientRepository;
 
-	@GetMapping("/clientList")
-	public String clientList(Model model) {
+	@GetMapping("/listClient")
+	public String listClient(Model model) {
 		model.addAttribute("clients", clientRepository.findAll());
-		return "client/clientList";
+		return "client/listClient";
 	}
 
 	@GetMapping("/delete")
 	public String delete(@RequestParam(name = "id", required = true) Long id, Model model) {
 		clientRepository.deleteById(id);
-		return "redirect:/client/clientList";
+		return "redirect:/client/listClient";
 	}
 
 	@GetMapping("/edit")
@@ -91,7 +88,6 @@ public class ClientController {
 			return goEdit(client, model);
 		} 
 		clientRepository.save(client);
-		return "redirect:/client/clientList";
+		return "redirect:/client/listClient";
 	}
-
 }
