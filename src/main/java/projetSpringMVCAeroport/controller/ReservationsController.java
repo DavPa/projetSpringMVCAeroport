@@ -57,6 +57,9 @@ public class ReservationsController {
 		if (reservation.getPassager() != null && reservation.getPassager().getId() == null) {
 			reservation.setPassager(null);
 		}
+		if (reservation.getVol() != null && reservation.getVol().getId() == null) {
+			reservation.setVol(null);
+		}
 		reservationRepository.save(reservation);
 		return "redirect:/reservations/listReservations";
 	}
