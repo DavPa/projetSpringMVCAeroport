@@ -34,6 +34,20 @@
 					<form:input type="integer" path="numero" cssClass="for-control"></form:input>
 				</div>
 				<div class="form-group">
+					<form:label path="vol.id">Vol : </form:label>
+					<form:select path="vol.id">
+						<form:option value="">pas de vol</form:option>
+						<form:options itemValue="id" itemLabel="info" items="${vols}"></form:options>
+					</form:select>
+				</div>
+				<div class="form-group">
+					<form:label path="passager.id">Passager : </form:label>
+					<form:select path="passager.id">
+						<form:option value="">pas de passager</form:option>
+						<form:options itemValue="id" itemLabel="info" items="${passagers}"></form:options>
+					</form:select>
+				</div>
+				<div class="form-group">
 					<button type="submit" class="btn btn-outline-primary">enregistrer</button>
 					<a href="listReservations" class="btn btn-outline-danger">annuler</a>
 				</div>

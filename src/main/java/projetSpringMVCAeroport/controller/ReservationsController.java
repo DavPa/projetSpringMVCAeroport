@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jpa.model.Reservations;
+import jpa.repository.PassagerRepository;
 import jpa.repository.ReservationRepository;
+import jpa.repository.VolRepository;
 
 @Controller
 @RequestMapping("/reservations")
@@ -20,6 +22,10 @@ public class ReservationsController {
 
 	@Autowired
 	private ReservationRepository reservationRepository;
+	@Autowired
+	private VolRepository volRepository;
+	@Autowired
+	private PassagerRepository passagerRepository;
 
 	@GetMapping("/listReservations")
 	// méthode pour lister les réservations qu'il y a dans la base
@@ -48,13 +54,17 @@ public class ReservationsController {
 
 	@PostMapping("/save")
 	public String save(@ModelAttribute("reservation") Reservations reservation) {
+		if (reservation.getPassager() != null && reservation.getPassager().getId() == null) {
+			reservation.setPassager(null);
+		}
 		reservationRepository.save(reservation);
 		return "redirect:/reservations/listReservations";
 	}
 
 	private String goEdit(Reservations reservation, Model model) {
 		model.addAttribute("reservation", reservation);
-		// model.addAttribute("salles", salleRepository.findAll());
+		model.addAttribute("vols", volRepository.findAll());
+		model.addAttribute("passagers", passagerRepository.findAll());
 		return "reservations/editReservations";
 	}
 

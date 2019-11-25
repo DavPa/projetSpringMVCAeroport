@@ -29,6 +29,8 @@
 					<th>Id</th>
 					<th>Date</th>
 					<th>Numéro</th>
+					<th>Vol</th>
+					<th>Passager</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -39,6 +41,8 @@
 						<td>${r.id}</td>
 						<td>${r.date_reservation}</td>
 						<td>${r.numero}</td>
+						<td>${r.vol.id}</td>
+						<td>${r.passager.id}</td>
 						<c:url var="edit" value="edit">
 							<c:param name="id" value="${r.id}"></c:param>
 						</c:url>
